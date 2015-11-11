@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "線上諮詢";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Content/css/page.css">
+}
+@Scripts.Render("~/ServiceMail")
+
+<ul class="brandcrumb">
+    <li><a href="~/index">HOME</a></li>
+    <li>線上諮詢</li>
+</ul>
+
+@Html.Partial("sidebar")
+
+<div id="content">
+
+    <h2>您好請填寫以下資料，我們將盡快為您服務!</h2>
+
+    <form ng-submit="Mail_Submit()">
+        <p>
+            <label>姓名</label>
+            <input type="text" ng-model="fd.name" required>
+            <input type="radio" name="sex" ng-model="fd.gender" value="male"> 先生
+            <input type="radio" name="sex" ng-model="fd.gender" value="female"> 小姐
+        </p>
+        <p>
+            <label>連絡電話</label>
+            <input type="text" ng-model="fd.tel">
+        </p>
+        <p>
+            <label>E-mail</label>
+            <input type="email" ng-model="fd.email" required>
+        </p>
+        <p>
+            <label>諮詢內容</label>
+            <textarea cols="80" rows="10" ng-model="fd.opinion" required></textarea>
+        </p>
+        <p>
+            <label>驗證碼</label>
+            <img src="~/_Code/Ashx/ValidateCode.ashx?vn=mail" />
+            <input type="text" ng-model="fd.vaild" required>
+        </p>
+
+        <button class="btn">確定送出</button>
+    </form>
+
+</div><!-- content //-->

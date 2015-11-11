@@ -1,0 +1,101 @@
+﻿@model ProcCore.Business.DB0.ProductData
+@{
+    ViewBag.Title = "推高機詳細資訊";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Content/css/page.css">
+}
+
+@section scripts {
+    <script>
+        $(window).load(function () {
+            $('#thumb').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+}
+@if (Model.ProductType.is_second == true)
+{
+    <ul class="brandcrumb">
+        <li><a href="~/index">HOME</a></li>
+        <li><a href="~/Products/Second">中古堆高機</a></li>
+        <li><a href="~/Products/Second?id=@Model.type_id">@Model.ProductType.type_name</a></li>
+        <li>@Model.product_name</li>
+    </ul>
+}
+else
+{
+    <ul class="brandcrumb">
+        <li><a href="~/index">HOME</a></li>
+        <li><a href="~/Products/Brand">全新堆高機</a></li>
+        <li><a href="~/Products/Brand?id=@Model.type_id">@Model.ProductType.type_name</a></li>
+        <li>@Model.product_name</li>
+    </ul>
+}
+
+
+@Html.Partial("sidebar")
+
+<div id="content">
+
+    <h2>@Model.ProductType.type_name</h2>
+
+    <section class="info">
+        <!-- 產品圖(多張圖輪播)
+             小圖尺寸 w123 h82
+             大圖尺寸 w500 h332-->
+
+        <div class="flexslider" id="thumb">
+            <ul class="slides">
+                @foreach (var f in Model.imgs)
+                {
+                    <li data-thumb="@f.small_size">
+                        <!-- 小圖 -->
+                        <img src="@f.big_size" alt="產品圖"><!-- 大圖 -->
+                    </li>
+                }
+            </ul>
+
+        </div>
+
+        <dl class="float-l">
+            <!-- 固定欄位 -->
+            <dt>@Model.product_name</dt>
+            <dd>
+                <span>承　　重:</span>
+                @Model.supporting_capacity
+            </dd>
+            <dd>
+                <span>引擎規格:</span>
+                @Model.engine
+            </dd>
+
+            <!-- 自行編輯欄位，下為範例 -->
+            <dd>
+                @if (Model.introduction != null)
+                {
+                    @Html.Raw(Model.introduction.Replace("\n", "<br/>"))
+                }
+            </dd>
+        </dl>
+    </section>
+
+    <!-- 其他規格 -->
+    <section class="other">
+        <!-- 編輯器內容放此 -->
+        @Html.Raw(Model.memo)
+    </section>
+    @if (Model.ProductType.is_second == true)
+    {
+        <div class="align-c"><a href="~/Products/Second?id=@Model.type_id" class="btn">回列表 BACK</a></div>
+    }
+    else
+    {
+        <div class="align-c"><a href="~/Products/Brand?id=@Model.type_id" class="btn">回列表 BACK</a></div>
+    }
+
+</div><!-- content //-->

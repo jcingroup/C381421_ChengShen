@@ -1,0 +1,264 @@
+﻿@model ProcCore.Business.DB0.c_ProductData
+
+@{
+    ViewBag.Caption = MvcSiteMapProvider.SiteMaps.Current.CurrentNode.Title;
+    ViewBag.MenuName = MvcSiteMapProvider.SiteMaps.Current.CurrentNode.ParentNode.Title;
+    ViewBag.popWindowTitle = "產品";
+    ViewBag.popWindowID = "Edit";
+    ViewBag.popWindowSize = "modal-lg";
+}
+@section IncludeCSS{
+}
+@section IncludeScript{
+
+    @Html.Partial("Manage/jsCommVar")
+    <script>
+        var Info_Insert_Success = '@Resources.Res.Info_Insert_Success';
+        var Info_Update_Success = '@Resources.Res.Info_Update_Success';
+    </script>
+    @Scripts.Render("~/ProductDataCtr")
+    @Scripts.Render("~/upfile")
+}
+
+@section sidebar{
+    @Html.Partial("Manage/vucMenu")
+}
+
+<h3 class="title">
+    <span>@ViewBag.Caption</span>
+</h3>
+
+<form ng-submit="Init_Query()">
+    <div class="table-responsive">
+        <div class="table-header">
+
+            <h5 class="table-title" ng-show="sd.name.length>0">搜尋<strong>{{sd.name}}</strong>的結果:</h5>
+
+            <div class="table-filter">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label for="">中古/全新</label>
+                        <select ng-model="@Html.sd(x => x.q.is_second)"
+                                ng-change="Query_changeType()"
+                                class="form-control input-sm"
+                                ng-options="m.value as m.label for m in q_is_SecondData"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">分類</label>
+                        <select ng-model="@Html.sd(x => x.q.type_id)"
+                                class="form-control input-sm"
+                                ng-options="m.key as m.value for m in query_producttype"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="sr-only">@Resources.Res.Search</label>
+                        <input type="text" class="form-control input-sm" placeholder="請輸入產品名稱..."
+                               ng-model="@Html.sd(x => x.q.name)">
+                    </div>
+                    <button class="btn-primary btn-sm" type="submit"><i class="fa-search"></i></button>
+                    <div class="form-group pull-right">
+                        <label class="small" for="">每頁顯示</label>
+                        <select class="form-control input-sm" ng-model="@Html.sd(x => x.q.PageSize)" ng-change="Init_Query()">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                        <label class="small" for="">筆</label>
+                    </div>
+                </div>
+            </div>
+        </div><!-- table-header -->
+
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-xs-1 text-center">
+                        <div class="row">
+                            <div class="col-xs-6 text-center">
+                                <label class="cbox">
+                                    <input type="checkbox" ng-click="SelectAllCheckDel($event)">
+                                    <i class="fa-check"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </th>
+                    <th class="col-xs-1 text-center">@Resources.Res.Button_Modify</th>
+                    <th class="col-xs-2 text-center">中古/全新</th>
+                    <th class="col-xs-2 text-center">產品分類</th>
+                    <th class="col-xs-5 text-center">產品名稱</th>
+                    <th class="col-xs-1">排序</th>
+                    @* 如果需要排序功能:
+                        <th class="col-xs-2 ordered">
+                            <a class="desc" href="#">
+                                遞減排序
+                                <i class="fa-caret-up"></i>
+                                <i class="fa-caret-down"></i>
+                            </a>
+                        </th>
+                        <th class="col-xs-2 ordered">
+                            <a class="asc" href="#">
+                                遞增排序
+                                <i class="fa-caret-up"></i>
+                                <i class="fa-caret-down"></i>
+                            </a>
+                        </th>
+                        <th class="col-xs-2 ordered">
+                            <a href="#">
+                                預設(還沒排)
+                                <i class="fa-caret-up"></i>
+                                <i class="fa-caret-down"></i>
+                            </a>
+                        </th>
+                    *@
+                </tr>
+            </thead>
+            <tbody ng-repeat="gd in Grid_Items">
+                <tr>
+                    <td class="text-center">
+                        <div class="row">
+                            <div class="col-xs-6 text-center">
+                                <label class="cbox">
+                                    <input type="checkbox" ng-model="@Html.gd(x => x.m.check_del)">
+                                    <i class="fa-check"></i>
+                                </label>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn-link btn-lg"
+                                type="button"
+                                data-toggle="modal" data-target="#@ViewBag.popWindowID"
+                                ng-click="Master_Open_Modify($index)"
+                                title="@Resources.Res.Button_Sure_Modify">
+                            <i class="fa-pencil"></i>
+                        </button>
+                        @* 刪除:
+                            <button class="btn-link btn-lg text-danger"><i class="fa-trash-o"></i></button>
+                        *@
+                    </td>
+                    <td class="text-center">
+                        <span class="label label-success" ng-if="gd.is_second==true">
+                            中古
+                        </span>
+                        <span class="label label-primary" ng-if="gd.is_second==false">
+                            全新
+                        </span>
+                    </td>
+                    <td class="text-center">
+                        {{@Html.gd(x => x.m.type_name)}}
+                    </td>
+                    <td class="text-center">
+                        {{@Html.gd(x => x.m.product_name)}}
+                    </td>
+                    <td>{{@Html.gd(x => x.m.sort)}}</td>
+                </tr>
+                @* highlight被勾選到的那一列
+                    <tr class="tr-focus">...</tr>
+                *@
+            </tbody>
+        </table><!-- table本體 -->
+
+        <div class="table-footer">
+            @Html.Partial("Manage/GridPager")
+        </div><!-- table-footer -->
+
+    </div><!-- table外殼 -->
+</form>
+
+@using (Html.popWindow("show_master_edit", "Master_Edit_Close()", (string)ViewBag.popWindowTitle, (string)ViewBag.popWindowID, (string)ViewBag.popWindowSize))
+{
+    <div class="modal-body">
+        @Html.Lang("BaseData")
+        <div class="alert alert-warning">
+            <p class="text-danger">* 為必填</p>
+        </div>
+        <form class="form-horizontal" ng-submit="Master_Submit()">
+            <div class="form-group">
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 產品上/下架</label>
+                <div class="btn-group col-xs-6">
+                    <label class="btn btn-primary"
+                           ng-model="@Html.fd(x => x.m.i_Hide)"
+                           btn-radio="false">
+                        上架
+                    </label>
+                    <label class="btn btn-primary"
+                           ng-model="@Html.fd(x => x.m.i_Hide)"
+                           btn-radio="true">
+                        下架
+                    </label>
+                </div><!-- radio button //-->
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 列表用圖片</label>
+                <div class="col-xs-3">
+                    <filehandleshadowbox sysid="fd.id" filekind="SingleImg">
+                    </filehandleshadowbox>
+                </div>
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 產品圖片(上限8張)</label>
+                <div class="col-xs-5">
+                    <filehandleshadowbox sysid="fd.id" filekind="DoubleImg">
+                    </filehandleshadowbox>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 分類</label>
+                <div class="col-xs-2">
+                    <select ng-model="@Html.fd(x => x.m.is_second)"
+                        ng-change="changeType()"
+                        class="form-control"
+                        ng-options="m.value as m.label for m in is_SecondData"></select>
+                </div>
+                <div class="col-xs-4">
+                    <select ng-model="@Html.fd(x => x.m.type_id)"
+                            class="form-control"
+                            ng-options="m.key as m.value for m in producttype"></select>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 產品名稱</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" ng-model="@Html.fd(x => x.m.product_name)" required maxlength="100" />
+                </div>
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 排序</label>
+                <div class="col-xs-1">
+                    <input class="form-control" type="number" ng-model="@Html.fd(x => x.m.sort)" required />
+                </div>
+                <p class="help-inline col-xs-3">數字愈大愈前面</p>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 承重</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" ng-model="@Html.fd(x => x.m.supporting_capacity)" maxlength="200" />
+                </div>
+                <label class="col-xs-2 control-label"><b class="text-danger">*</b> 引擎規格</label>
+                <div class="col-xs-4">
+                    <input class="form-control" type="text" ng-model="@Html.fd(x => x.m.engine)" maxlength="200" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-2 control-label">產品介紹</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control" ng-model="@Html.fd(x => x.m.introduction)" rows="6" maxlength="500"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-2 control-label">備註</label>
+                <div class="col-xs-10">
+                    <textarea class="form-control"
+                    ng-model="@Html.fd(x => x.m.memo)"
+                    ckeditor="editorOptions"
+                    maxlength="500"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12 text-right">
+                    <button type="submit" class="btn-primary"><i class="fa-check"></i> @Resources.Res.Button_Save</button>
+                    <button type="button" data-dismiss="modal"><i class="fa-times"></i> @Resources.Res.Button_Close</button>
+                </div>
+            </div>
+        </form>
+    </div>
+}
+

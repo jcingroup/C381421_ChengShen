@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<document>
+
+  <file>
+    <sort>1</sort>
+    <name>productType.html</name>
+    <memo>【產品分類管理】操作教學(含新增、修改、刪除)</memo>
+  </file>
+
+  <file>
+    <sort>2</sort>
+    <name>productData.html</name>
+    <memo>【產品管理】操作教學(含新增、修改、刪除)</memo>
+  </file>
+
+  <file>
+    <sort>3</sort>
+    <name>ckfinder.html</name>
+    <memo>【產品管理】操作教學(編輯器-常用功能)</memo>
+  </file>
+
+</document>

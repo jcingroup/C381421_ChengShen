@@ -1,0 +1,5 @@
+﻿2014-11-03 13:21:45.309=>Can not open the package. Package is an OLE compound document. If this is an encrypted package, please supply the password
+2014-11-03 13:24:19.432=>Can not open the package. Package is an OLE compound document. If this is an encrypted package, please supply the password
+2014-11-03 13:24:38.792=>Can not open the package. Package is an OLE compound document. If this is an encrypted package, please supply the password
+2014-11-03 13:59:12.098=>索引超出範圍。必須為非負數且小於集合的大小。
+參數名稱: index

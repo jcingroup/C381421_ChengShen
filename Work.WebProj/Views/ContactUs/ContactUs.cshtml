@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "聯絡我們";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Content/css/page.css">
+}
+
+<ul class="brandcrumb">
+    <li><a href="~/index">HOME</a></li>
+    <li>聯絡我們</li>
+</ul>
+
+@Html.Partial("sidebar")
+
+<div id="content">
+
+    <h2>聯絡我們</h2>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3616.140452520031!2d121.23910800000003!3d24.995342999999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346821954f6c8689%3A0x65f100d5fb411c0e!2z5om_5L-h5aCG6auY5qmf5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2s!4v1424849708323" frameborder="0" style="border:0"></iframe>
+    <ul class="text-list">
+        <li>地址: 桃園市中壢區中園路二段46巷381號</li>
+        <li>服務專線: <strong>03-4513161</strong> (代表號)</li>
+        <li>傳真: 03-4511424</li>
+        <li>E- mail: <a href="mailto:hsieh.y103688@msa.hinet.net">hsieh.y103688@msa.hinet.net</a></li>
+    </ul>
+
+</div><!-- content //-->

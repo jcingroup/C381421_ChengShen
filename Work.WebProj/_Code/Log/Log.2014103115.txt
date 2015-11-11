@@ -1,0 +1,4 @@
+﻿2014-10-31 15:09:25.176=>由於另一個處理序正在使用檔案 'D:\300.TeamProjectWork\040_Jcin\C071411_EEI_Energy\Work.WebProj\_Code\RPTExcel\DownExcel.xlsx'，所以無法存取該檔案。
+2014-10-31 15:09:28.421=>由於另一個處理序正在使用檔案 'D:\300.TeamProjectWork\040_Jcin\C071411_EEI_Energy\Work.WebProj\_Code\RPTExcel\DownExcel.xlsx'，所以無法存取該檔案。
+2014-10-31 15:10:10.727=>由於另一個處理序正在使用檔案 'D:\300.TeamProjectWork\040_Jcin\C071411_EEI_Energy\Work.WebProj\_Code\RPTExcel\DownExcel.xlsx'，所以無法存取該檔案。
+2014-10-31 15:10:29.764=>由於另一個處理序正在使用檔案 'D:\300.TeamProjectWork\040_Jcin\C071411_EEI_Energy\Work.WebProj\_Code\RPTExcel\DownExcel.xlsx'，所以無法存取該檔案。

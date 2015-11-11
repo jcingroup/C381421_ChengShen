@@ -1,0 +1,22 @@
+﻿@import "base/basic.css";
+
+@charset "utf-8";
+
+/*-- Content --*/
+body {
+	font: 18px/125% '微軟正黑體', 'Microsoft JhengHei', Georgia, sans-serif;
+    text-align:left;
+    background: none;
+}
+ul, ol {
+	list-style: disc;
+	margin-left: 2em;
+	text-indent: 0em;
+}
+ol {list-style: decimal;}
+li {
+	margin-bottom: 8px;
+}
+img {max-width: 100%;}
+h4 {font-size: 1.429em;}
+strong {font-size: 1em;}

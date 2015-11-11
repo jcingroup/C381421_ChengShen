@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+  <mvcSiteMapNode title="功能選單" clickable="false" >
+
+    <mvcSiteMapNode title="一般資料維護"   clickable="false" area="Sys_Active" IconClass="fa-list-alt" key="25" >
+      <mvcSiteMapNode title="產品分類管理" controller="ProductType" action="Main" description="產品分類管理 維護作業"/>
+      <mvcSiteMapNode title="產品管理" controller="ProductData" action="Main" description="產品管理 維護作業"/>
+      <mvcSiteMapNode title="參數設定" controller="ParmData" action="Main" description="參數設定 維護作業"/>
+    </mvcSiteMapNode>
+
+    <mvcSiteMapNode title="系統資料設定" clickable="false" area="Sys_Base" IconClass="fa-cogs" key="90" roles="Admins,Managers">
+      <mvcSiteMapNode title="使用者管理" controller="Users" action="Main" roles="Admins"/>
+      <mvcSiteMapNode title="角色管理" controller="Roles" action="Main" roles="Admins"/>
+      <mvcSiteMapNode title="變更密碼" controller="Users" action="ChangePassword" />
+      <mvcSiteMapNode title="操作教學影片" controller="Doc" action="ListGrid" />
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

@@ -1,0 +1,229 @@
+@import "base/basic.css";
+@import "base/layout.css";
+@import "flexslider.css";
+@charset "utf-8";
+
+/*-- basic --*/
+h2 {
+    color: #4251AE;
+    font-size:1.875em;
+    line-height: 110%;
+    border-top: 1px solid #E8E8E8;
+    border-bottom: 1px solid #E8E8E8;
+    padding: 13px 0;
+}
+h3 {
+    color: #EFA630;
+    font-size: 1.625em;
+}
+
+/*-- Layout --*/
+header {
+    height: 308px;
+    background: url(../images/line.gif) 0 108px repeat-x;
+}
+footer { background: #E8E8E8; color: #BDBDBD; }
+#main {
+    background: url(../images/bg3.gif) center 0 no-repeat;
+    text-align: left;
+    min-width: 1007px;
+    max-width: 1007px;
+}
+#content {
+    width: 780px;
+    float: right;
+    margin: 45px 0 20px 0;
+}
+aside {
+    float: left;
+    width: 210px;
+    margin-top: 7px;
+}
+
+/* head */
+.summary {
+    display: none;
+}
+#banner {
+    max-width: 100%;
+    top: 108px;
+}
+#banner .slides { height: 200px; }
+#banner .slides > li {
+    background: url(../images/banner.jpg) center 0 no-repeat;
+    width: 100%; height: 100%;
+}
+#banner .slides > li:nth-child(2) {
+    background-image: url(../images/banner2.jpg);
+}
+#banner .slides > li:nth-child(3) {
+    background-image: url(../images/banner3.jpg);
+}
+
+/* 側欄 */
+aside h4 {
+    color: #E8E8E8;
+    font-size: 1.5em;
+    line-height: 177.8%;
+    margin: 0;
+}
+aside a {
+    color: #424242;
+    font-weight: 800;
+    line-height: 2.625em;
+    display: block;transition: color .35s;
+
+}
+aside i {
+    font-style: normal;
+    padding:13px 40px 13px 0;
+}
+aside a:hover,
+aside .current { color: #4C519F; }
+aside a:hover i,
+aside .current i { background: url(../images/icon-nav.gif) right center no-repeat; }
+
+/*-- content --*/
+/* 麵包屑 */
+.brandcrumb { position: absolute; left: 240px; top: 12px; }
+.brandcrumb li {
+    background: url(../images/icon-arrow.gif) 7px center no-repeat;
+    display: inline; float: left;
+    color: #FBBB55;
+    font-weight: bold;
+    line-height: 21px;
+    padding-left: 27px;
+}
+.brandcrumb :first-child { background: none; padding-left: 0; }
+.brandcrumb a { color: #D2D2D2; }
+.brandcrumb a:hover { color: #FBBB55; }
+.brandcrumb :first-child a {
+    background: url(../images/icon-home.gif) 0 0 no-repeat;
+    text-indent: -9999px;
+    display: inline-block;
+    width: 25px; height: 21px;
+    vertical-align: top;
+}
+
+/* 文字列表 */
+.text-list li {
+    background: #fafafa url(../images/icon-list.gif) 8px 13px no-repeat;
+    color: #444;
+    font-size: .938em;
+    padding: 10px; padding-left: 25px;
+    margin: 1px 0;
+}
+
+/*-- products --*/
+/* 產品圖列表 */
+figure {
+    text-align: center;
+    border: 1px solid #E8E8E8;
+    width: 254px; height: 292px;
+}
+figure img {
+    max-width: 100%;
+    position: absolute;
+    clip: rect(0px,254px,190px,0px);
+}
+figure h3,
+figure p {
+    text-align: left;
+    -webkit-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    transition: opacity .5s;
+}
+figure h3 {
+    color: #000;
+    font-size: 1.25em;
+    position: absolute;
+    left: 15px; top: 186px;
+}
+figure p {
+    color: #797879;
+    font-size: .875em;
+    margin: 0;
+    -webkit-transform: translate3d(15px,227px,0);
+    -ms-transform: translate3d(15px,227px,0);
+    transform: translate3d(15px,227px,0);
+}
+figure .btn {
+    margin-top: 70px;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    transform: scale(2);
+}
+figure:hover .btn {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+}
+figure:hover h3,
+figure:hover p { opacity: 0; }
+
+/* 產品內容 */
+.Products .align-c { clear: both; }
+.Products section { margin-bottom: 30px; }
+.info { overflow: hidden; }
+
+#thumb {
+    float: left;
+    width: 500px;
+}
+#thumb .slides > li {
+    border-bottom: 3px solid #e9e9e9;
+    max-height: 465px;
+}
+.info dl {
+    color: #444;
+    font-weight: bold;
+    margin-left: 15px;
+    max-width: 250px;
+}
+.info dt {
+    color: #EFA630;
+    font-size: 1.625em;
+    margin-bottom: 10px;
+}
+.info dd {
+    font-size: .938em;
+    line-height: 170%;
+}
+.info dl :nth-child(4) { margin-top: 10px; }
+.info span {
+    color: #999;
+    font-weight: normal;
+    display: inline-block;
+    width: 75px;
+}
+
+/*-- 產品諮詢 --*/
+form label {
+    color: #888;
+    display: inline-block;
+    width: 70px;
+    margin-right: 7px;
+    vertical-align: top;
+}
+form input { vertical-align: middle; }
+form input[type="radio"] { margin-right: 0; }
+form p { margin: 0 0 15px 0; }
+form button { background: #fff; margin: 30px 0 0 80px; }
+form img { vertical-align: middle; }
+
+/*-- 聯絡我們 --*/
+iframe {
+    width: 100%;
+    height: 300px;
+    margin: 10px 0 0 0;
+}
+
+
+/*-- 寬螢幕 --*/
+@media all and (min-width: 1025px) {
+    #main { max-width: 1220px; }
+    #content { width: 980px; }
+    figure { width: 300px; margin-right: 8px; }
+    figure img { clip: rect(0px,298px,190px,0px); }
+    .info dl { max-width: 450px; }
+}

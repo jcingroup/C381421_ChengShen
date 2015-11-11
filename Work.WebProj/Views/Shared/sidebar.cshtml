@@ -1,0 +1,57 @@
+﻿<aside>
+    @if (ViewBag.Brand == null)
+    {
+        <h4>SECOND HAND</h4>
+    }
+    else
+    {
+        <h4>BRAND NEW</h4>
+    }
+    @{
+        var sidebar = (List<DotWeb.PType>)ViewBag.Sidebar;
+    }
+    <nav>
+
+        @if (ViewBag.Brand == null)
+        {
+            foreach (var a in sidebar)
+            {
+                if (a.is_second == true)
+                {
+                    if (ViewBag.A != null)
+                    {
+                        if (ViewBag.A == a.id)
+                        {
+                            <a class="current" href="~/Products/Second?id=@a.id"><i>@a.type_name</i></a>
+                        }
+                        else
+                        {
+                            <a href="~/Products/Second?id=@a.id"><i>@a.type_name</i></a>
+                        }
+                    }
+                    else
+                    {
+                        <a href="~/Products/Second?id=@a.id"><i>@a.type_name</i></a>
+                    }
+                }
+            }
+        }
+        else
+        {
+            foreach (var a in sidebar)
+            {
+                if (a.is_second == false)
+                {
+                    if (ViewBag.A == a.id)
+                    {
+                        <a class="current" href="~/Products/Brand?id=@a.id"><i>@a.type_name</i></a>
+                    }
+                    else
+                    {
+                        <a href="~/Products/Brand?id=@a.id"><i>@a.type_name</i></a>
+                    }
+                }
+            }
+        }
+    </nav>
+</aside>

@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Caption = MvcSiteMapProvider.SiteMaps.Current.CurrentNode.Title;
+    ViewBag.MenuName = MvcSiteMapProvider.SiteMaps.Current.CurrentNode.ParentNode.Title;
+}
+@section IncludeCSS{}
+@section IncludeScript{
+@Html.Partial("Manage/jsCommVar")
+<script>
+    var Info_Insert_Success = '@Resources.Res.Info_Insert_Success';
+    var Info_Update_Success = '@Resources.Res.Info_Update_Success';
+</script>
+@Scripts.Render("~/ParmCtr")
+}
+
+@section sidebar{
+    @Html.Partial("Manage/vucMenu")
+}
+
+<h3 class="title">
+    <span>@ViewBag.Caption</span>
+</h3>
+
+<form ng-submit="Master_Submit()">
+<div class="row">
+    @*<div class="col-xs-6">
+
+        <div class="item-box">
+            <div class="item-title">
+                <h5>線上諮詢產品規格參數設定</h5>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-warning" role="alert">多筆請用逗號分開</div>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <h6><i class="fa-chevron-circle-right"></i> PCB板層</h6>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            <input class="form-control" type="text" ng-model="fd.layer" />
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <h6><i class="fa-chevron-circle-right"></i> 表面處理</h6>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-9">
+                            <input class="form-control" type="text" ng-model="fd.surfacehandle" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>*@
+
+    <div class="col-xs-6">
+
+        <div class="item-box">
+            <div class="item-title">
+                <h5>信件參數設定</h5>
+            </div>
+            <div class="panel-body">
+
+                <div class="alert alert-warning" role="alert"><i class="fa-info-circle"></i> 多筆信箱請用逗號分開</div>
+
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">收件人信箱</label>
+                        <div class="col-xs-9">
+                            <input class="form-control" type="text" ng-model="fd.receiveMails" />
+                        </div>
+                    </div>
+                    @*<div class="form-group">
+                        <label class="col-xs-3 control-label">密件副本信箱</label>
+                        <div class="col-xs-9">
+                            <input class="form-control" type="text" ng-model="fd.BccMails" />
+                        </div>
+                    </div>*@
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-action text-center">
+            <button type="submit" class="btn-primary"><i class="fa-check"></i> @Resources.Res.Button_Save</button>
+        </div>
+
+    </div>
+
+</div>
+</form>

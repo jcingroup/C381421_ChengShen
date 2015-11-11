@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<!-- saved from url=(0014)about:internet -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="@Resources.ResWeb.keywords" />
+    <meta name="description" content="@Resources.ResWeb.description" />
+    <title>@Resources.ResWeb.WebTitle:@ViewBag.Category:@ViewBag.Title:</title>
+    <!-- all jquery -->
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- 讓ie9以下讀懂html5 + css3 -->
+    <!--[if lt IE 9]>
+    <script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+    <![endif]-->
+
+    @RenderSection("css", required: false)
+</head>
+
+<body ng-app="angularApp" class="@ViewBag.BodyClass">
+
+    <div id="container">
+
+        <header>
+            <h1 onclick="location.href='@Url.Content("~/index")'" title="回首頁">承信堆高機有限公司 統編53172776 | 承信堆高機企業社 統編83891669</h1>
+
+            <nav id="main-nav">
+                <a href="~/AboutUs">公司簡介</a>
+                <a href="~/Products/Second">中古堆高機</a>
+                <a href="~/Products/Brand">全新堆高機</a>
+                <a href="~/Service">線上諮詢</a>
+                <a href="~/ContactUs">聯絡我們</a>
+            </nav>
+
+            <div class="summary">二手．全新堆高機　內壢交流道附近，歡迎來廠賞車　中古買賣．維修．中長期租賃</div>
+
+            <div id="banner" class="flexslider">
+                <ul class="slides">
+                    @if (ViewBag.index != null)
+                    {
+                        <!-- 首頁輪播 -->
+                        <li>
+                            <img src="~/Content/images/index/banner2.jpg">
+                            <div class="float-l">
+                                <h3>TOYOTA</h3>
+                                <h4>內燃式堆高機</h4>
+                                <h5>8FG/8FD 1.0~3.5噸</h5>
+                                <p>TOYOTA產車系列再一次將世界級的造車技術發揮的淋漓盡致<br>特有的A/C驅動系統搭配世界第一的SAS穩定系統(堆高機系列配備)<br>使移動搬運更有效率，安全、舒適、易保養的人性化設計理念<br>讓您的事業如虎添翼、領先群雄</p>
+                                <a href="~/Products/Second" class="btn">→ Read more...</a><!-- 連結至中古車的TOYOTA系列 -->
+                            </div>
+                        </li>
+                        <li>
+                            <img src="~/Content/images/index/banner.jpg">
+                            <div class="float-l">
+                                <h3>TOYOTA</h3>
+                                <h4>電動式堆高機</h4>
+                                <h5>7FG/7FD 1.5~5.0噸</h5>
+                                <p>TOYOT產車系列，再一次將世界級的造車技術發揮的淋漓盡致<br>使移動搬運更有效率，安全、舒適、易保養的人性化設計理念<br>讓您的事業如虎添翼、領先群雄！</p>
+                                <a href="~/Products/Second" class="btn">→ Read more...</a>連結至中古車的TOYOTA系列
+                            </div>
+                        </li>
+                        <li>
+                            <img src="~/Content/images/index/banner3.jpg">
+                            <div class="float-l">
+                                <h3>KOMATSU</h3>
+                                <h4>小松堆高機</h4>
+                                <h5>BX50 series 1.0~3.5噸</h5>
+                                <p>日本政府頒發最佳設計大賞<br>一台設計精緻，低噪音、無震動的完全堆高機<br>LEO NXT的設計細膩精緻，防止因疏忽而產生錯誤的發生，操作視野寬廣提升安全作業，降低維修保養費，採直列式雙油壓馬達分流操作，環保省油。</p>
+                                <a href="~/Products/Second" class="btn">→ Read more...</a><!-- 連結至中古車的KOMATSU系列 -->
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <!-- 內頁輪播圖 -->
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    }
+                </ul>
+            </div><!-- banner //-->
+        </header>
+
+        <div id="main" ng-controller="ctrl">
+            @RenderBody()
+        </div><!-- main //-->
+
+        <a class="goTop" href="#container">TOP</a>
+
+    </div><!-- container //-->
+
+    <footer>
+        <div class="copyright">Cheng Shen Forklift Co., Ltd. &copy; 2015</div>
+    </footer>
+
+    <!-- 滑動 goTop -->
+    <script src="~/Scripts/pages/scroll.js"></script>
+
+    <script src="~/Scripts/pages/jquery.flexslider-min.js"></script>
+    <script>
+        // banner輪播
+        $(window).load(function () {
+            $('#banner').flexslider({
+                animation: "slide",
+                prevText: "",
+                nextText: "",
+                slideshowSpeed: 6000
+            });
+        });
+    </script>
+    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/GoogleAnalytics.js"></script>
+</body>
+</html>

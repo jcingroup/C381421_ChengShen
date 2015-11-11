@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script>
+        function isValidDate(s) {
+            //格式2014/1/1
+            var bits = s.split('/');
+            var d = new Date(bits[0], bits[1] - 1, bits[2]);
+            return d && (d.getMonth() + 1) == bits[1] && d.getDate() == Number(bits[2]);
+        }
+
+        alert(isValidDate('2016/2/29'))
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

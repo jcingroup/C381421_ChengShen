@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    if (ViewBag.BodyClass == "Products Second")
+    {
+        ViewBag.Title = "中古推高機";
+    }
+    else
+    {
+        ViewBag.Title = "全新推高機";
+    }
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Content/css/page.css">
+}
+
+<ul class="brandcrumb">
+    <li><a href="~/index">HOME</a></li>
+    @if (ViewBag.BodyClass == "Products Second")
+    {
+        <li><a href="~/Products/Second">中古堆高機</a></li>
+    }
+    else
+    {
+        <li><a href="~/Products/Brand">全新堆高機</a></li>
+    }
+</ul>
+
+@Html.Partial("sidebar")
+
+<div id="content">
+
+    <h2>目前無產品資料...</h2>
+
+</div><!-- content //-->

@@ -1,0 +1,62 @@
+﻿@model DotWeb.Controllers.NewPorduct
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section css {
+    <link rel="stylesheet" href="~/Content/css/index.css">
+}
+
+<section class="newest">
+    <article>
+        <h2><u>NEW PRODUCTS</u></h2>
+
+        <!-- 中古堆高機類最新更新產品 -->
+        <figure>
+            <img src="@Model.SecondHand.img"><!-- 最新更新產品圖 -->
+            <a href="~/Products/Second">進入中古堆高機列表</a>
+            <figcaption>
+                <h3>SECOND HAND<em>中古堆高機</em></h3>
+                <h4>@Model.SecondHand.product_name</h4><!-- 最新更新產品名稱 -->
+                <p>承重:@Model.SecondHand.supporting_capacity</p><!-- 最新產品規格 -->
+                <p>引擎規格:@Model.SecondHand.engine</p>
+                <a href="~/Products/Detail?id=@Model.SecondHand.id" class="btn">→ Read more...</a><!-- 連結至最新產品頁 -->
+            </figcaption>
+        </figure>
+
+        <!-- 全新堆高機最新更新產品 -->
+        <figure>
+            <img src="@Model.BrandNew.img">
+            <a href="~/Products/Brand">進入中古堆高機列表</a>
+            <figcaption>
+                <h3>BRAND NEW<em>全新堆高機</em></h3>
+                <h4>@Model.BrandNew.product_name</h4>
+                <p>承重:@Model.BrandNew.supporting_capacity</p>
+                <p>引擎規格:@Model.BrandNew.engine</p>
+                <a href="~/Products/Detail?id=@Model.BrandNew.id" class="btn">→ Read more...</a><!-- 連結至最新產品頁 -->
+            </figcaption>
+        </figure>
+    </article>
+</section>
+
+<section class="about">
+    <article>
+        <h2>ABOUT US</h2>
+        <p><strong>承信堆高機</strong>專業經營日本外匯進口堆高機及各廠牌之柴油、汽油堆高機、電動堆高機等買賣及中長期租賃，更有專業的服務團隊、品質精良的產品，來滿足您物流硬體需求。<br>本公司有專業維修保養廠及優良的維護工程師團隊，工程師皆受過各式堆高機專業完整的技術訓練及高品質的維護經驗。<br>我們的中古堆高機皆自日本外匯原裝進口，品質優良、價格合理、售後服務效率高，是貴公司長期合作的好夥伴，有現貨可供挑選，歡迎親臨本廠實際檢驗、實車操作，有專業技師現場解說，相信能符合貴公司需求。<br>現場近百餘輛堆高機 1T~15T 機種齊全，歡迎參觀。</p>
+        <a href="~/AboutUs" class="btn">→ Read more...</a>
+    </article>
+</section>
+
+<section class="contacts">
+    <article>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3616.140452520031!2d121.23910800000003!3d24.995342999999995!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346821954f6c8689%3A0x65f100d5fb411c0e!2z5om_5L-h5aCG6auY5qmf5pyJ6ZmQ5YWs5Y-4!5e0!3m2!1szh-TW!2s!4v1424849708323" frameborder="0" style="border:0"></iframe>
+        <h2>CONTACUTS</h2>
+        <ul>
+            <li>地址: 桃園市中壢區中園路二段46巷381號</li>
+            <li>服務專線: <strong>03-4513161</strong> (代表號)</li>
+            <li>傳真: 03-4511424</li>
+            <li>E- mail: <a href="mailto:hsieh.y103688@msa.hinet.net">hsieh.y103688@msa.hinet.net</a></li>
+        </ul>
+    </article>
+</section>

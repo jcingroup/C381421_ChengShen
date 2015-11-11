@@ -1,0 +1,212 @@
+﻿@model ProcCore.Business.DB0.c_Equipment
+
+@{
+    ViewBag.Caption = MvcSiteMapProvider.SiteMaps.Current.CurrentNode.Title;
+    ViewBag.MenuName = MvcSiteMapProvider.SiteMaps.Current.CurrentNode.ParentNode.Title;
+    ViewBag.popWindowTitle = "設備資料 維護作業 - ";
+    ViewBag.popWindowID = "Edit";
+    ViewBag.popWindowSize = null;
+}
+@section IncludeCSS{
+}
+@section IncludeScript{
+
+    @Html.Partial("Manage/jsCommVar")
+    <script>
+        var Info_Insert_Success = '@Resources.Res.Info_Insert_Success';
+        var Info_Update_Success = '@Resources.Res.Info_Update_Success';
+    </script>
+    @Scripts.Render("~/equipmentController")
+
+}
+
+@section sidebar{
+    @Html.Partial("Manage/vucMenu")
+}
+
+<h3 class="title">
+    <span>@ViewBag.Caption</span>
+</h3>
+
+<form ng-submit="Init_Query()">
+    <div class="table-responsive">
+
+        @*
+            <div class="table-header">
+
+                <h5 class="table-title">搜尋<strong>關鍵字</strong>的結果:</h5>
+
+                <div class="table-filter">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <label for="" class="sr-only">分類一</label>
+                            <select name="" id="" class="form-control input-sm">
+                                <option value="">分類一</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="sr-only">分類二</label>
+                            <select name="" id="" class="form-control input-sm">
+                                <option value="">分類二</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="sr-only">@Resources.Res.Search</label>
+                            <input type="text" class="form-control input-sm" placeholder="請輸入關鍵字..."
+                                   ng-model="@Html.sd(x => x.q.user_id)">
+                        </div>
+                        <button class="btn-primary btn-sm" type="submit"><i class="fa-search"></i></button>
+                        <div class="form-group pull-right">
+                            <label class="small" for="">每頁顯示</label>
+                            <select class="form-control input-sm" name="" id="">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                            </select>
+                            <label class="small" for="">筆</label>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- table-header -->
+        *@
+
+        <table>
+            <thead>
+                <tr>
+                    <th class="col-xs-1 text-center">
+                        <label class="cbox">
+                            <input type="checkbox" ng-click="SelectAllCheckDel($event)">
+                            <i class="fa-check"></i>
+                        </label>
+                    </th>
+                    <th class="col-xs-1 text-center">@Resources.Res.Button_Modify</th>
+                    <th class="col-xs-4">機台編號</th>
+                    <th class="col-xs-1">機台型式</th>
+                    <th class="col-xs-1 text-center">既設_新設</th>
+                    <th class="col-xs-2">額定總燃燒量</th>
+                    @* 如果需要排序功能:
+                        <th class="col-xs-2 ordered">
+                            <a class="desc" href="#">
+                                遞減排序
+                                <i class="fa-caret-up"></i>
+                                <i class="fa-caret-down"></i>
+                            </a>
+                        </th>
+                        <th class="col-xs-2 ordered">
+                            <a class="asc" href="#">
+                                遞增排序
+                                <i class="fa-caret-up"></i>
+                                <i class="fa-caret-down"></i>
+                            </a>
+                        </th>
+                        <th class="col-xs-2 ordered">
+                            <a href="#">
+                                預設(還沒排)
+                                <i class="fa-caret-up"></i>
+                                <i class="fa-caret-down"></i>
+                            </a>
+                        </th>
+                    *@
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="gd in Grid_Items track by gd.equipment_id">
+                    <td class="text-center">
+                        <label class="cbox">
+                            <input type="checkbox" ng-model="@Html.gd(x => x.m.check_del)">
+                            <i class="fa-check"></i>
+                        </label>
+                    </td>
+                    <td class="text-center">
+                        <button class="btn-link btn-lg"
+                                data-toggle="modal" data-target="#@ViewBag.popWindowID"
+                                ng-click="Master_Open_Modify($index)"
+                                title="@Resources.Res.Button_Sure_Modify">
+                            <i class="fa-pencil"></i>
+                        </button>
+                        @* 刪除:
+                            <button class="btn-link btn-lg text-danger"><i class="fa-trash-o"></i></button>
+                        *@
+                    </td>
+                    <td>
+                        {{@Html.gd(x => x.m.equipment_sn)}}
+                    </td>
+                    <td>
+                        {{@Html.gd(x => x.m.category) | category:InitData.options_equipment_category}}
+                    </td>
+                    <td class="text-center">
+                        <span class="label label-success" ng-if="gd.is_new_equip==true">
+                            新設
+                        </span>
+                        <span class="label label-primary" ng-if="gd.is_new_equip==false">
+                            既設
+                        </span>
+                    </td>
+                    <td>{{@Html.gd(x => x.m.setup_amount)}}</td>
+                </tr>
+                @* highlight被勾選到的那一列
+                    <tr class="tr-focus">...</tr>
+                *@
+            </tbody>
+        </table><!-- table本體 -->
+
+        <div class="table-footer">
+            @Html.Partial("Manage/GridPager")
+        </div><!-- table-footer -->
+
+    </div><!-- table外殼 -->
+</form>
+
+@using (Html.popWindow("show_master_edit", "Master_Edit_Close()", (string)ViewBag.popWindowTitle, (string)ViewBag.popWindowID, (string)ViewBag.popWindowSize))
+{
+    <form class="form-horizontal" ng-submit="Master_Submit()">
+        <div class="modal-body">
+            @Html.Lang("BaseData")
+            <div class="form-group">
+                <label class="col-xs-2 control-label col-xs-offset-1">機台編號</label>
+                <div class="col-xs-3">
+                    <input type="text" class="form-control" ng-model="@Html.fd(x => x.m.equipment_sn)"
+                           maxlength="16"
+                           required />
+                </div>
+                <label class="col-xs-2 control-label">設備類別</label>
+                <div class="col-xs-3">
+                    <select class="form-control"
+                            ng-model="@Html.fd(x => x.m.category)"
+                            ng-options="m.equipment_category_id as m.category_name for m in InitData.options_equipment_category"
+                            required></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-2 control-label col-xs-offset-1">新設 / 既設</label>
+
+                <div class="btn-group col-xs-3">
+                    <label class="btn btn-primary"
+                           ng-model="@Html.fd(x => x.m.is_new_equip)"
+                           btn-radio="true">
+                        新設
+                    </label>
+                    <label class="btn btn-primary"
+                           ng-model="@Html.fd(x => x.m.is_new_equip)"
+                           btn-radio="false">
+                        既設
+                    </label>
+                </div><!-- radio button //-->
+            </div>
+
+            <div class="form-group">
+                <label class="col-xs-3 control-label">額定總燃燒量</label>
+                <div class="col-xs-3">
+                    <input class="form-control" type="number" step="0.01" ng-model="@Html.fd(x => x.m.setup_amount)" />
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn-primary"><i class="fa-check"></i> @Resources.Res.Button_Save</button>
+            <button type="button" data-dismiss="modal"><i class="fa-times"></i> @Resources.Res.Button_Close</button>
+        </div>
+    </form>
+}
+<iframe class="ng-hide" ng-src="{{downloadExcel}}"></iframe>

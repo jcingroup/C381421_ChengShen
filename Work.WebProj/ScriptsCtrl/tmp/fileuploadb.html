@@ -1,0 +1,20 @@
+﻿<div>
+    <div class="form-control">
+        <input type="file" ng-file-select="FileUpload($files)" multiple>
+    </div>
+
+    <p class="help-block">
+        <span class="img-upload" ng-repeat="f in filedata">
+            <button type="button" class="close" data-dismiss="alert" ng-click="FileDelete(f.FileName)" tabindex="-1">
+                &times;
+                <span class="sr-only">Close</span>
+            </button>
+            <a href="#" ng-click="openShadowbox(f.OriginFilePath)" rel="shadowbox[{{filekind}}]" tabindex="-1">
+                <img ng-src="{{f.RepresentFilePath}}"
+                     popover="{{f.FileName}} size:{{f.Size/1024|number:0}} KB"
+                     popover-trigger="mouseenter" />
+            </a>
+        </span>       
+    </p>
+    <span class="help-block text-danger" ng-if="filedata.length<1 && filekind!='SingleImg'">請上傳圖片!</span>
+</div>

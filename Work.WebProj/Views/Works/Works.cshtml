@@ -1,0 +1,14 @@
+﻿@{
+  ViewBag.BodyClass = "Works";
+  ViewBag.Title = "工程實績";
+  Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@section breadcrumb {
+    <ul class="breadcrumb">
+        <li class="s"><a href="~/Index">HOME</a></li>
+        <li>@ViewBag.Title</li>
+    </ul>
+}
+
+<h2>@ViewBag.Title<span>OUR WORKS</span></h2>
