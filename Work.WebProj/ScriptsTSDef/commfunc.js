@@ -28,7 +28,9 @@ function isValidJSONDate(value, userFormat) {
                 y = date[i];
         }
         ;
-        return (m > 0 && m < 13 && y && y.length === 4 && d > 0 && d <= (new Date(y, m, 0)).getDate());
+        return (m > 0 && m < 13 &&
+            y && y.length === 4 &&
+            d > 0 && d <= (new Date(y, m, 0)).getDate());
     };
     return isDate(theDate, theFormat);
 }
