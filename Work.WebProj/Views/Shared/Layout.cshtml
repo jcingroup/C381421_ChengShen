@@ -6,7 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="@Resources.ResWeb.keywords" />
     <meta name="description" content="@Resources.ResWeb.description" />
-    <title>@Resources.ResWeb.WebTitle @ViewBag.Category @ViewBag.Title</title>
+    @if (ViewBag.index != null)
+    {
+        <title>@Resources.ResWeb.WebTitle</title>
+    }
+    else
+    {
+        <title>@Resources.ResWeb.WebTitle @ViewBag.Category @ViewBag.Title</title>
+    }
     <!-- all jquery -->
     <script src="//code.jquery.com/jquery-latest.min.js"></script>
 
