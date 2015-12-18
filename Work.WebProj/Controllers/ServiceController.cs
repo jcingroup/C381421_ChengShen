@@ -72,6 +72,8 @@ namespace DotWeb.WebApp.Controllers
     {        
         //聯絡資料
         public string name { get; set; }
+        public string company { get; set; }
+        public string address { get; set; }
         public string gender { get; set; }
         public string tel { get; set; }
         public string email { get; set; }

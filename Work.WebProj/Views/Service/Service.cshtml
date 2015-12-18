@@ -21,10 +21,18 @@
 
     <form ng-submit="Mail_Submit()">
         <p>
+            <label>公司名稱</label>
+            <input type="text" ng-model="fd.company" />
+        </p>
+        <p>
             <label>姓名</label>
             <input type="text" ng-model="fd.name" required>
             <input type="radio" name="sex" ng-model="fd.gender" value="male"> 先生
             <input type="radio" name="sex" ng-model="fd.gender" value="female"> 小姐
+        </p>
+        <p>
+            <label>地址</label>
+            <input type="text" ng-model="fd.address" />
         </p>
         <p>
             <label>連絡電話</label>
