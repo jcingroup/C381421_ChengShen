@@ -79,7 +79,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   查詢類似 中古堆高機,堆高機 的當地語系化字串。
+        ///   查詢類似 中古堆高機,堆高機,承信堆高機 的當地語系化字串。
         /// </summary>
         internal static string keywords {
             get {
