@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="@Resources.ResWeb.keywords" />
     <meta name="description" content="@Resources.ResWeb.description" />
     @if (ViewBag.index != null)
@@ -30,17 +31,24 @@
     <div id="container">
 
         <header>
-            <h1 onclick="location.href='@Url.Content("~/index")'" title="回首頁">承信堆高機有限公司 統編53172776 | 承信堆高機企業社 統編83891669</h1>
+        
+            <div class="wrap">
+                <h1 onclick="location.href='@Url.Content("~/index")'" title="回首頁">承信堆高機有限公司 統編53172776 | 承信堆高機企業社 統編83891669</h1>
+                <button class="nav-trigger"><span>選單</span></button>
+                <nav id="main-nav">
+                    <a href="~/AboutUs">公司簡介</a>
+                    <a href="~/Products/Second">中古堆高機</a>
+                    <a href="~/Products/Brand">全新堆高機</a>
+                    <a href="~/Service">線上諮詢</a>
+                    <a href="~/ContactUs">聯絡我們</a>
+                </nav>
+            </div>
 
-            <nav id="main-nav">
-                <a href="~/AboutUs">公司簡介</a>
-                <a href="~/Products/Second">中古堆高機</a>
-                <a href="~/Products/Brand">全新堆高機</a>
-                <a href="~/Service">線上諮詢</a>
-                <a href="~/ContactUs">聯絡我們</a>
-            </nav>
-
-            <div class="summary">二手中古堆高機．全新堆高機　內壢交流道附近，歡迎來廠賞車　中古買賣．維修．中長期租賃</div>
+            <div class="summary">
+                <span>二手中古堆高機．全新堆高機</span>
+                <span>內壢交流道附近，歡迎來廠賞車</span>
+                <span>中古買賣．維修．中長期租賃</span>
+            </div>
 
             <div id="banner" class="flexslider">
                 <ul class="slides">
@@ -64,7 +72,7 @@
                                 <h4>電動式堆高機</h4>
                                 <h5>7FG/7FD 1.5~5.0噸</h5>
                                 <p>TOYOT產車系列，再一次將世界級的造車技術發揮的淋漓盡致<br>使移動搬運更有效率，安全、舒適、易保養的人性化設計理念<br>讓您的事業如虎添翼、領先群雄！</p>
-                                <a href="~/Products/Second" class="btn">→ Read more...</a>連結至中古車的TOYOTA系列
+                                <a href="~/Products/Second" class="btn">→ Read more...</a>@* 連結至中古車的TOYOTA系列 *@
                             </div>
                         </li>
                         <li>
@@ -98,7 +106,12 @@
     </div><!-- container //-->
 
     <footer>
-        <div class="copyright">Cheng Shen Forklift Co., Ltd. &copy; 2015 承信堆高機專營：<a href="http://chengshen.com.tw/">堆高機</a>,<a href="http://chengshen.com.tw/">中古堆高機</a></div>
+        <div class="copyright">
+            Cheng Shen Forklift Co., Ltd. &copy; 2015
+            <span class="keywords">
+                承信堆高機專營：<a href="http://chengshen.com.tw/">堆高機</a>,<a href="http://chengshen.com.tw/">中古堆高機</a>
+            </span>
+        </div>
     </footer>
 
     <!-- 滑動 goTop -->
@@ -114,6 +127,12 @@
                 nextText: "",
                 slideshowSpeed: 6000
             });
+        });
+
+        // mobile menu
+        $(".nav-trigger").click(function () {
+            $(this).toggleClass("active");
+            $("#main-nav").slideToggle();
         });
     </script>
     @RenderSection("scripts", required: false)

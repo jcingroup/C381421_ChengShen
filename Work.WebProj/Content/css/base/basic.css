@@ -31,6 +31,7 @@ a:focus {
 
 /*      basic elements
 -----------------------------------------------------------------------*/
+* {box-sizing: border-box;}
 body {
     background: #fff url(../../images/bg.gif) repeat-x 0 0;
     color: #666;
@@ -133,3 +134,16 @@ button, button:hover, button:focus {
 .btn:hover,
 .btn:active { background: #9397D6; color: #fff; }
 .btn.no { }
+
+
+/* RWD
+-----------------------------------------------------------------------*/
+@media (max-width: 1199px) {
+    h2 {font-size: 3.25em;}
+}
+@media (max-width: 991px) {
+    h2 {font-size: 2.75em;}
+}
+@media (max-width: 575px) {
+    h2 {font-size: 2.25em;}
+}

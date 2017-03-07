@@ -18,18 +18,17 @@ footer { color: #3E8582; }
     text-align: center;
     padding: 13px 0;
     position: relative;
-    top: 107px;
+    clear: both;
 }
+.summary span {margin: 0 0.5em;}
 #banner {
-    max-width: 1007px;
+    width: 1170px;
     height: 24.5em;
-    margin: auto;
-    top: 140px;
+    margin: 30px auto 0 auto;
 }
 .slides li { position: relative; }
 #banner img {
     float: left;
-    margin-right: 20px;
     width: auto;
     max-width: 34.375em;
     max-height: 24.5em;
@@ -67,7 +66,7 @@ footer { background: #2F2A4F; }
 
 /* main */
 article {
-    max-width: 1220px;
+    width: 1170px;
     margin: auto;
     text-align: left;
     overflow: hidden;
@@ -86,7 +85,7 @@ article {
     line-height: 52px;
 }
 figure {
-    width: 495px; height: 250px;
+    width: 41.25%; height: 250px;
     background: #181842;
 }
 figure figcaption { background: url(../images/proBg.png) right 0 repeat-y; }
@@ -157,20 +156,19 @@ figure:hover p {
     border: 1px solid #C69452;
     padding: 20px;
     margin: auto;
-    width: 93%;
-    max-width: 1007px;
+    width: 1170px;
     position: relative;
 }
 .about h2,
 .about p { float: left; }
-.about h2 { font-size: 3.75em; letter-spacing: 1px; width: 35%; }
+.about h2 { font-size: 3.75em; letter-spacing: 1px; width: 30%; }
 .about p {
     background: rgba(20,21,51,.8);
     color: #fff;
     font-size: .937em;
     line-height: 175%;
     padding: 20px;
-    width: 64%;
+    width: 70%;
     box-sizing: border-box;
 }
 .about strong { font-size: 1.333em; }
@@ -182,7 +180,7 @@ figure:hover p {
 .contacts { background: #50497F; }
 iframe {
     float: left;
-    margin: 0 35px 0 10px;
+    margin: 0 35px 0 0;
     width: 55%; height: 285px;
 }
 .contacts h2,
@@ -195,6 +193,7 @@ iframe {
     margin: 0;
 }
 .contacts ul { color: #fff; line-height: 187.5%;}
+.contacts span {margin-right: 0.5em;}
 .contacts strong { color: #FFBD52; font-size: 1.375em; }
 .contacts a { color: #fff; }
 .contacts a:hover { color: #ffbd52; }
@@ -202,13 +201,238 @@ iframe {
 
 /* RWD
 -----------------------------------------------------------------------*/
-@media all and (min-width: 1025px) {
-    #banner { max-width: 1220px; }
-    #banner img { margin-left: 20px; }
-    .slides .float-l { width: 560px; }
-    .about article { max-width: 1200px; }
-    .about h2 { width: 30%; }
-    .about p { width: 69%; }
-    .about .btn { left: 220px; }
-    iframe { margin-left: 0; }
+@media (max-width: 1199px) {
+    
+    header {height: auto;}
+    #banner, article, .about article {width: 960px;}
+
+    #banner {height: 20em;}
+    #banner img {
+        max-width: 27em;
+        max-height: 20em;
+        position: absolute;
+        left: 2em;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .slides .float-l {
+        max-width: 26em;
+        margin: 0 0 0 30.25em;
+    }
+    .slides h3 {font-size: 5em;}
+    .flex-direction-nav a {margin-top: -44px;}
+    .flex-control-nav {
+        width: auto;
+        bottom: 0;
+        right: auto;
+        left: 30.25em;
+    }
+    
+    .newest {
+        padding: 10px 0 20px 0;
+        background-position: 0 84px; 
+    }
+    figure {height: 220px;}
+    figure h3 {top: 20px;}
+    figure:hover h3 {font-size: 3em;}
+    figure:hover h4, figure:hover p {transform: translate3d(30px,70px,0);}
+    
+    .about h2 {width: 33%; font-size: 3.25em;}
+    .about p {width:67%;}
+    .about .btn {left: 165px;}
+}
+
+@media (max-width: 991px) {
+    #banner, article, .about article {width: 740px;}
+    #banner {height: 18.75em; margin-top: 15px;}
+    #banner img {
+        max-width: 20em;
+        max-height: none;
+        left: 1.5em;
+    }
+    .slides .float-l {max-width: 18em; margin-left: 23.5em;}
+    .slides h3 {margin-left: -5px; font-size: 3.25em;}
+    .slides h4 {font-size: 2em;}
+    .slides h5 {font-size: 1.25em;}
+    .flex-direction-nav .flex-prev,
+    .flex-direction-nav .flex-next {opacity: 0.5;}
+    .flex-control-nav {
+        left: 8.75em;
+        bottom: 20px;
+    }
+
+    .newest {
+        padding: 0 0 15px 0;
+        background-position: 0 61px; 
+    }
+    figure {width: 45%; height: 190px;}
+    figure h3 {top: 15px;}
+    figure:hover h3 {font-size: 2.5em;}
+    figure:hover h4, figure:hover p {transform: translate3d(20px,60px,0);}
+    
+    .about {padding: 25px 0;}
+    .about article {padding: 15px;}
+    .about h2 {width: 100%; font-size: 2.75em; margin-bottom: 10px;}
+    .about p {width:100%; padding: 12px 15px;}
+    .about .btn {top: 30px;left: auto; right: 20px;}
+    
+    iframe {height: 220px; margin-right: 25px;}
+    .contacts h2 {font-size: 2.5em;}
+}
+
+@media (max-width: 767px) {
+    #banner, article, .about article {width: 546px;}
+
+    .summary {padding: 10px 0;}
+    .summary span {margin:0 0.3em;}
+    .summary span:last-child {
+        display: block;
+        margin-top: 0.6em;
+        text-align: center;
+    }
+
+    #banner {height: 16.5em; margin-top: 15px;}
+    #banner img {
+        max-width: none;
+        max-height: 8.25em;
+        left: 11em;
+        top: 0;
+        transform: translateX(-50%);
+    }
+    .slides .float-l {
+        width: 100%;
+        height: 16.5em;
+        max-width: none;
+        margin-left: 0;
+        padding-left: 19em;
+        position: relative;
+    }
+    .slides h3 {font-size: 2.5em;}
+    .slides h4 {font-size: 1.75em;}
+    .slides h5 {font-size: 1em;}
+    .slides p {
+        width: 100%;
+        padding: 0 4.75em;
+        position: absolute;
+        left: 0;
+        top: 13em;
+        transform: translateY(-50%);
+    }
+    .slides .btn {
+        float: none;
+        margin-top: 10px;
+        padding: 5px 10px;
+        border: 1px solid;
+    }
+    .flex-direction-nav a::before {
+        width: 33px;
+        height: 66px;
+        background-size: cover;
+    }
+    .flex-control-nav {
+        left: 50%;
+        bottom: 0px;
+        transform: translateX(-50%);
+    }
+    .flex-control-paging li {margin: 0 4px;}
+    .flex-control-paging li a {
+        width: 14px;
+        height: 14px;
+        background-size: cover;
+    }
+
+    .newest {
+        padding: 10px 0 15px 0;
+        background-position: 0 71px; 
+    }
+    figure {width: 47%; height: 160px;}
+    figure h3 {right: 20px; top: 5px; font-size: 1.25em;}
+    figure h4 {font-size: 1.5em;}
+    figure:hover h3 {
+        padding:0 10px 0 30px;
+        text-align: right;
+        font-size: 2.75em;
+        line-height: 1;
+        transform: translate3d(0,-10px,0);
+    }
+    figure:hover h4,
+    figure:hover p {transform: translate3d(10px,20px,0);}
+
+    .about p {padding: 15px 18px;}
+
+    iframe {
+        width: 100%;
+        float: none;
+        margin: 0 0 15px 0;
+    }
+    .contacts h2 {
+        margin-right: 20px;
+        text-align: right;
+        line-height: 1.2;
+    }
+}
+
+@media (max-width: 575px) {
+    #banner, article, .about article {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .summary span {display: block; margin: 0 0 0.6em 0;}
+    .summary span:last-child {margin: 0;}
+
+    #banner {height: 15.6em; margin-top: 15px;}
+    #banner img {
+        display: block;
+        margin: 0 auto;
+        float: none;
+        position: static;
+        transform: none;
+    }
+    .slides .float-l {
+        height: auto;
+        float: none;
+        padding: 0 40px;
+        text-align: center;
+    }
+    .slides h3 {font-size: 2.25em;}
+    .slides h4 {font-size: 1.5em;}
+    .slides h5 {font-size: 0.9em;}
+    .slides p, .flex-control-nav {display: none;}
+
+    .newest {background-position: 0 60px; }
+    .newest h2 {font-size: 2.15em;}
+    .newest u {border-bottom-width: 3px;}
+    figure {
+        width: 100%;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .about {padding: 0;}
+    .about article {
+        padding: 25px;
+        text-align: right;
+        border: 0;
+        outline: 1px solid #C69452;
+        outline-offset: -15px;
+    }
+    .about h2 {text-align: left; font-size: 2.25em;}
+    .about p {text-align: left; margin-bottom: 10px; padding: 10px;}
+    .about .btn {
+        display: inline-block;
+        position: static;
+        clear: both;
+    }
+    
+    iframe {height: 180px;}
+    .contacts h2 {
+        width: auto;
+        margin: 0 10px 5px 0;
+        text-align: left;
+        font-size: 2.25em;
+    }
+    .contacts ul {font-size: 0.9em;}
+
 }
