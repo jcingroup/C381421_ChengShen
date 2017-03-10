@@ -249,6 +249,10 @@ figure:hover figcaption::before { opacity: .95; }
     }
 }
 
+@media (min-width: 576px) {
+    #main-nav {display: block !important;}
+}
+
 @media (max-width: 575px) {
     header .wrap, .copyright {
         width: 100%;
