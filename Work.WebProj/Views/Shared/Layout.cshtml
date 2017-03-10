@@ -89,9 +89,9 @@
                     else
                     {
                         <!-- 內頁輪播圖 -->
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li class="banner1"><div class="wrap"><span>二手．全新堆高機</span></div></li>
+                        <li class="banner2"><div class="wrap"><span>內壢交流道附近<em>，</em>歡迎來廠賞車</span></div></li>
+                        <li class="banner3"><div class="wrap"><span>中古買賣．維修<em>．</em>中長期租賃</span></div></li>
                     }
                 </ul>
             </div><!-- banner //-->
@@ -134,6 +134,13 @@
             $(this).toggleClass("active");
             $("#main-nav").slideToggle();
         });
+
+        // mobile sidebar menu
+        // $(".aside-trigger").click(function () {
+        //     $(this).toggleClass("active");
+        //     $("aside").slideToggle();
+        // });
+
     </script>
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/GoogleAnalytics.js"></script>

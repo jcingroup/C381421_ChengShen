@@ -14,24 +14,25 @@
     <li>@Model.type_name</li>
 </ul>
 
-@Html.Partial("sidebar")
-
 <div id="content">
 
     <h2>@Model.type_name</h2>
-
-    @foreach (var a in Model.ProductData)
-    {
-        <figure>
-            <img src="@a.img">
-            <figcaption>
-                <h3>@a.product_name</h3>
-                <p>承重:@a.supporting_capacity</p>
-                <p>引擎規格:@a.engine</p>
-                <a href="~/Products/Detail?id=@a.id" class="btn">→ Read more...</a>
-            </figcaption>
-        </figure>
-    }
-
+    
+    <div class="row">
+        @foreach (var a in Model.ProductData)
+        {
+            <figure>
+                <img src="@a.img">
+                <figcaption>
+                    <h3>@a.product_name</h3>
+                    <p>承重:@a.supporting_capacity</p>
+                    <p>引擎規格:@a.engine</p>
+                    <a href="~/Products/Detail?id=@a.id" class="btn">→ Read more...</a>
+                </figcaption>
+            </figure>
+        }
+    </div>
 
 </div><!-- content //-->
+
+@Html.Partial("sidebar")

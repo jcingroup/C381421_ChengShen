@@ -95,6 +95,7 @@ textarea {
     height:100px;*/
 }
 button, button:hover, button:focus {
+    font-family: \5FAE\8EDF\6B63\9ED1\9AD4, Georgia, sans-serif;
     border: none;
     outline: none;
 }
@@ -140,10 +141,19 @@ button, button:hover, button:focus {
 -----------------------------------------------------------------------*/
 @media (max-width: 1199px) {
     h2 {font-size: 3.25em;}
+    textarea {width:80%;}
 }
+
 @media (max-width: 991px) {
     h2 {font-size: 2.75em;}
+    h3 {margin: 12px 0 0 8px; font-size: 1.5em;}
+
+    .float-l,.float-r {
+        float: none;
+        margin: 0 0 15px 0;
+    }
 }
+
 @media (max-width: 575px) {
     h2 {font-size: 2.25em;}
 }

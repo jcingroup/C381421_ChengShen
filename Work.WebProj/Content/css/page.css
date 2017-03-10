@@ -26,11 +26,11 @@ footer { background: #E8E8E8; color: #BDBDBD; }
 #main {
     background: url(../images/bg3.gif) center 0 no-repeat;
     text-align: left;
-    min-width: 1007px;
-    max-width: 1007px;
+    min-width: 320px;
+    width: 1170px;
 }
 #content {
-    width: 780px;
+    width: 930px;
     float: right;
     margin: 45px 0 20px 0;
 }
@@ -44,23 +44,29 @@ aside {
 .summary {
     display: none;
 }
-#banner {
-    width: 100%;
-    top: 108px;
-}
-#banner .slides { width: 100%; height: 200px; }
+#banner {width: 100%;}
+#banner .slides {height: 200px;}
 #banner .slides > li {
     background: url(../images/banner.jpg) center 0 no-repeat;
     width: 100%; height: 100%;
 }
-#banner .slides > li:nth-child(2) {
-    background-image: url(../images/banner2.jpg);
+#banner .slides .wrap {height: 100%;}
+#banner .slides .banner2 {background-image: url(../images/banner2.jpg);}
+#banner .slides .banner3 {background-image: url(../images/banner3.jpg);}
+#banner .slides > li span {
+    position: absolute;
+    right: 276px;
+    bottom: 79px;
+    font-size: 3.125em;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
 }
-#banner .slides > li:nth-child(3) {
-    background-image: url(../images/banner3.jpg);
-}
+#banner .slides .banner2 span {right: 5px; bottom: 50px;}
+#banner .slides .banner3 span {right: 38px; bottom: 43px;}
 
 /* 側欄 */
+/*.aside-trigger {display: none;}*/
 aside h4 {
     color: #E8E8E8;
     font-size: 1.5em;
@@ -87,15 +93,20 @@ aside .current i { background: url(../images/icon-nav.gif) right center no-repea
 /* 麵包屑 */
 .brandcrumb { position: absolute; left: 240px; top: 12px; }
 .brandcrumb li {
-    background: url(../images/icon-arrow.gif) 7px center no-repeat;
-    display: inline; float: left;
+    float: left;
     color: #FBBB55;
     font-weight: bold;
     line-height: 21px;
-    padding-left: 27px;
 }
-.brandcrumb :first-child { background: none; padding-left: 0; }
-.brandcrumb a { color: #D2D2D2; }
+.brandcrumb li::after {
+    content: " ";
+    display: block;
+    width: 27px;
+    height: 21px;
+    float: right;
+    background: url(../images/icon-arrow.gif) center center no-repeat;
+}
+.brandcrumb a {color: #D2D2D2;}
 .brandcrumb a:hover { color: #FBBB55; }
 .brandcrumb :first-child a {
     background: url(../images/icon-home.gif) 0 0 no-repeat;
@@ -104,6 +115,7 @@ aside .current i { background: url(../images/icon-nav.gif) right center no-repea
     width: 25px; height: 21px;
     vertical-align: top;
 }
+.brandcrumb :last-child::after {display: none;}
 
 /* 文字列表 */
 .text-list li {
@@ -116,15 +128,25 @@ aside .current i { background: url(../images/icon-nav.gif) right center no-repea
 
 /*-- products --*/
 /* 產品圖列表 */
+.row {
+    margin-left: -5px;
+    margin-right: -5px;
+}
 figure {
     text-align: center;
-    border: 1px solid #E8E8E8;
-    width: 254px; height: 292px;
+    width: 33.33%; height: 292px;
+    margin-right: -4px;
+    padding: 0 5px;
 }
 figure img {
     max-width: 100%;
     position: absolute;
-    clip: rect(0px,254px,190px,0px);
+    clip: rect(0px,303px,190px,0px);
+}
+figure figcaption {
+    padding: 190px 15px 15px 15px;
+    position: relative;
+    border: 1px solid #E8E8E8;
 }
 figure h3,
 figure p {
@@ -134,29 +156,31 @@ figure p {
     transition: opacity .5s;
 }
 figure h3 {
+    width: 100%;
+    margin: 10px 0 5px 0;
     color: #000;
     font-size: 1.25em;
-    position: absolute;
-    left: 15px; top: 186px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 figure p {
     color: #797879;
     font-size: .875em;
     margin: 0;
-    -webkit-transform: translate3d(15px,227px,0);
-    -ms-transform: translate3d(15px,227px,0);
-    transform: translate3d(15px,227px,0);
 }
 figure .btn {
-    margin-top: 70px;
-    -webkit-transform: scale(2);
-    -ms-transform: scale(2);
-    transform: scale(2);
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    -webkit-transform: translate(-50%, -50%) scale(2); 
+    -ms-transform: translate(-50%, -50%) scale(2); 
+    transform: translate(-50%, -50%) scale(2); 
 }
 figure:hover .btn {
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -ms-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
 figure:hover h3,
 figure:hover p { opacity: 0; }
@@ -172,13 +196,21 @@ figure:hover p { opacity: 0; }
 }
 #thumb .slides > li {
     border-bottom: 3px solid #e9e9e9;
-    max-height: 465px;
+    height: 465px;
+    position: relative;
 }
+#thumb .slides > li > img {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#thumb .flex-direction-nav a {top: 232px;}
 .info dl {
     color: #444;
     font-weight: bold;
-    margin-left: 15px;
-    max-width: 250px;
+    margin: 0 0 0 20px;
+    width: 410px;
 }
 .info dt {
     color: #EFA630;
@@ -189,7 +221,7 @@ figure:hover p { opacity: 0; }
     font-size: .938em;
     line-height: 170%;
 }
-.info dl :nth-child(4) { margin-top: 10px; }
+.info dl :nth-child(4) { margin-top: 5px; }
 .info span {
     color: #999;
     font-weight: normal;
@@ -208,7 +240,8 @@ form label {
 form input { vertical-align: middle; }
 form input[type="radio"] { margin-right: 0; }
 form p { margin: 0 0 15px 0; }
-form button { background: #fff; margin: 30px 0 0 80px; }
+form button { background: #fff; margin: 5px 0 0 80px; }
+form button:hover {border: 1px solid transparent;}
 form img { vertical-align: middle; }
 
 /*-- 聯絡我們 --*/
@@ -222,20 +255,201 @@ iframe {
 /* RWD
 -----------------------------------------------------------------------*/
 @media (max-width: 1199px) {
+    #main {width: 960px;}
+    #content {width: 720px;}
 
+    .flex-control-paging li {margin: 0 4px;}
+    .flex-control-paging li a {
+        width: 14px;
+        height: 14px;
+        background-size: cover;
+    }
+    
+    figure {height: 260px;}
+    figure figcaption {padding: 160px 10px 10px 10px;}
+    figure img {clip: rect(0px,233px,160px,0px);}
+    figure h3 {font-size: 1.125em;}
+    figure .btn {width: 60%;}
+    #thumb {width:375px;}
+    #thumb .slides > li {height:300px; }
+    #thumb .flex-direction-nav a {top: 150px;}
+    .info dl {width: 300px;}
 }
 
-@media (max-width: 991px) {}
+@media (max-width: 991px) {
+    h2 {padding: 10px 0; font-size: 1.5em;}
+    .text-list li {padding: 5px 5px 5px 25px; background-position: 8px 9px;}
 
-@media (max-width: 767px) {}
+    header {height: auto; background-position: 0 85px;}
+    #banner .slides {height: 180px;}
+    #banner .slides li {
+        background-position: center center;
+        background-size: cover;
+    }
+    #banner .slides > li span {font-size: 2.8em;}
+    #banner .slides .banner1 span {right: 80px;}
+    #banner .slides .banner2 span {right: 20px; bottom: 25px;}
+    #banner .slides .banner3 span {right: 50px;}
+    .flex-control-paging {display: none}
+    #main {width: 740px;}
+    .brandcrumb {
+        height: 21px;
+        position: static;
+        margin: 12px 0;
+    }
+    aside, #content {width: 100%; float: none;}
 
-@media (max-width: 575px) {}
+    /*.aside-trigger {
+        display: block;
+        width: 100%;
+        position: relative;
+        padding: 6px 8px;
+        text-align: left;
+        font-family: \5FAE\8EDF\6B63\9ED1\9AD4, Georgia, sans-serif;
+        font-size: 0.9em;
+        color: #999;
+        background: none;
+        border: 1px solid #e8e8e8;
+    }
+    .aside-trigger:hover, .aside-trigger:focus {border: 1px solid #e8e8e8;}
+    .aside-trigger::after {
+        content: " ";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        margin-top: -6px;
+        border: 8px solid transparent;
+        border-top: 12px solid #e8e8e8;
+        border-bottom-width: 0;
+    }
+    .aside-trigger.active::after {
+        border-bottom: 12px solid #e8e8e8;
+        border-top-width: 0;
+    }*/
+    aside {margin-bottom: 20px;}
+    aside h4 {
+        margin: 15px 0 5px 0;
+        border: 1px solid #e8e8e8;
+        border-width: 1px 0;
+    }
+    aside a {border-bottom: 1px solid #f2f2f2;}
+    aside a:last-child {border-bottom: 0;}
 
-/*-- 寬螢幕 --*/
-/*@media all and (min-width: 1025px) {
-    #main { max-width: 1220px; }
-    #content { width: 980px; }
-    figure { width: 300px; margin-right: 8px; }
-    figure img { clip: rect(0px,298px,190px,0px); }
-    .info dl { max-width: 450px; }
-}*/
+    #content {margin: 15px 0 20px 0;}
+    figure {margin-top: 10px; margin-bottom: 10px;}
+    figure img {clip: rect(0px,239px,160px,0px);}
+    figure .btn {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding-top: 65px;
+        transform: none;
+        border: 0;
+        opacity: 1;
+    }
+    figure figcaption::before {
+        width: 60%;
+        height: 30px;
+        left: 50%;
+        top: 58px;
+        transform: translateX(-50%);
+        background: #000;
+        opacity: 0.4;
+    }
+    figure:hover h3, figure:hover p {opacity: 1;}
+    figure:hover .btn {
+        transform: none;
+        background: none;
+    }
+    figure:hover figcaption::before {opacity: 0.4;}
+    #thumb, .info dl {width: 100%; float: none;}
+    #thumb {overflow: hidden;}
+    #thumb .slides > li {height:360px; }
+    #thumb .flex-direction-nav a {top: 180px;}
+    #thumb .flex-direction-nav .flex-next {right: 290px;}
+    #thumb .flex-viewport {width: 460px; float: left; margin-right: 10px;}
+    #thumb .flex-control-thumbs {width: 270px; margin-top: 0;}
+    #thumb .flex-control-thumbs li {width: 135px;}
+    .info dl {margin: 20px 0 0 0; clear: both;}
+    
+    form input, form textarea {background:none; border: 1px solid #e8e8e8;}
+    form input {width: 60%;}
+    form input[type="radio"] {width: auto;}
+    form .btn {font-size: 0.9em;}
+}
+
+@media (max-width: 767px) {
+    header {background-position: 0 75px;}
+    #main {width: 546px;}
+    #banner .slides {height: 150px;}
+    #banner .slides > li span {font-size: 2.2em;}
+    #banner .slides .banner1 span {right: 190px; bottom: 70px;}
+    .flex-direction-nav a {width: 30px; height: 30px; margin-top: -15px;}
+    .flex-direction-nav a::before {font-size: 30px; line-height: 30px;}
+    
+    figure {width: 50%;}
+    figure img {clip: rect(0px,268px,170px,0px);}
+    figure figcaption {padding-top: 170px;}
+    #thumb {width: 500px; margin: 0 auto 20px auto;}
+    #thumb .slides > li {height:300px;}
+    #thumb .flex-direction-nav a {top: 150px;}
+    #thumb .flex-direction-nav .flex-next {right: 10px;}
+    #thumb .flex-viewport {width: 100%; float: none;}
+    #thumb .flex-control-thumbs {width: 100%; margin-top: 5px;}
+    .flex-control-thumbs li {width: 125px;}
+}
+
+@media (max-width: 575px) {
+    header {background-position: 0 73px;}
+    #main {
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #banner .slides {height: 135px;}
+    #banner .slides .wrap {text-align: center;}
+    #banner .slides > li span {
+        display: block;
+        position: static;
+        margin-top: 67px;
+        font-size: 1.75em;
+        line-height: 1.4;
+        transform: translateY(-50%);
+    }
+    #banner .slides > li em {display: block; height: 0; overflow: hidden;}
+    
+    .brandcrumb {height: auto; margin: 8px 0; overflow: hidden;}
+    .brandcrumb li {font-size: 0.9em; line-height: 18px; margin-bottom: 5px;}
+    .brandcrumb li::after, .brandcrumb :first-child a {height: 18px; background-size: contain;}
+    .brandcrumb li::after {width: 20px;}
+    .brandcrumb :first-child a {width: 22px;}
+
+    #content img {max-width: 100%;}
+
+    .row {text-align: center;}
+    figure {width: 290px; height: 240px;}
+    figure img {clip: rect(0px,280px,150px,0px);}
+    figure figcaption {padding-top: 150px;}
+    #thumb {width: 100%; max-width: 500px;}
+    #thumb .slides > li {height:250px;}
+    #thumb .flex-direction-nav a {top: 125px;}
+    .flex-control-thumbs li {width: 25%;}
+    
+    form p {margin-bottom: 8px;}
+    form label {display: block; margin-bottom: 5px;}
+    form input, form textarea {
+        width: 100%;
+        margin-bottom: 4px;
+        padding: 6px 8px;
+        background:none;
+        border: 1px solid #e8e8e8;
+    }
+    form img {margin-bottom: 8px;}
+    form .btn {margin: 0;}
+
+    .ContactUs .text-list li {font-size: 0.875em;}
+}
