@@ -89,7 +89,16 @@ figure {
     background: #181842;
 }
 figure figcaption { background: url(../images/proBg.png) right 0 repeat-y; }
-figure img { margin-top: -15px; }
+/*figure img { margin-top: -20px; }*/
+figure img {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
 figure h3 {
     color: #FFBD52;
     font-size: 1.625em;
@@ -137,6 +146,7 @@ figure:hover h4,
 figure:hover p {
     opacity: 1;
     -webkit-transform: translate3d(30px,80px,0);
+    -ms-transform: translate3d(30px,80px,0);
     transform: translate3d(30px,80px,0);
 }
 figure:hover p {
@@ -213,6 +223,8 @@ iframe {
         position: absolute;
         left: 2em;
         top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
     .slides .float-l {
@@ -235,7 +247,11 @@ iframe {
     figure {height: 220px;}
     figure h3 {top: 20px;}
     figure:hover h3 {font-size: 3em;}
-    figure:hover h4, figure:hover p {transform: translate3d(30px,70px,0);}
+    figure:hover h4, figure:hover p {
+        -webkit-transform: translate3d(30px,70px,0);
+        -ms-transform: translate3d(30px,70px,0);
+        transform: translate3d(30px,70px,0);
+    }
     
     .about h2 {width: 33%; font-size: 3.25em;}
     .about p {width:67%;}
@@ -278,7 +294,11 @@ iframe {
     figure {width: 45%; height: 190px;}
     figure h3 {top: 15px;}
     figure:hover h3 {font-size: 2.5em;}
-    figure:hover h4, figure:hover p {transform: translate3d(20px,60px,0);}
+    figure:hover h4, figure:hover p {
+        -webkit-transform: translate3d(20px,60px,0);
+        -ms-transform: translate3d(20px,60px,0);
+        transform: translate3d(20px,60px,0);
+    }
     
     .about {padding: 25px 0;}
     .about article {padding: 15px;}
@@ -308,6 +328,8 @@ iframe {
         max-height: 8.25em;
         left: 11em;
         top: 0;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
         transform: translateX(-50%);
     }
     .slides .float-l {
@@ -327,6 +349,8 @@ iframe {
         position: absolute;
         left: 0;
         top: 13em;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
     .slides .btn {
@@ -343,6 +367,8 @@ iframe {
     .flex-control-nav {
         left: 50%;
         bottom: 0px;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
         transform: translateX(-50%);
     }
     .flex-control-paging li {margin: 0 4px;}
@@ -364,10 +390,16 @@ iframe {
         text-align: right;
         font-size: 2.75em;
         line-height: 1;
+        -webkit-transform: translate3d(0,-10px,0);
+        -ms-transform: translate3d(0,-10px,0);
         transform: translate3d(0,-10px,0);
     }
     figure:hover h4,
-    figure:hover p {transform: translate3d(10px,20px,0);}
+    figure:hover p {
+        -webkit-transform: translate3d(10px,20px,0);
+        -ms-transform: translate3d(10px,20px,0);
+        transform: translate3d(10px,20px,0);
+    }
 
     .about p {padding: 15px 18px;}
 
@@ -400,6 +432,8 @@ iframe {
         margin: 0 auto;
         float: none;
         position: static;
+        -webkit-transform: none;
+        -ms-transform: none;
         transform: none;
     }
     .slides .float-l {

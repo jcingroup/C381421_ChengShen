@@ -139,7 +139,7 @@ figure {
     padding: 0 5px;
 }
 figure img {
-    max-width: 100%;
+    width: 100%;
     position: absolute;
     clip: rect(0px,303px,190px,0px);
 }
@@ -203,6 +203,8 @@ figure:hover p { opacity: 0; }
     position: absolute;
     left: 0;
     top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 #thumb .flex-direction-nav a {top: 232px;}
@@ -347,6 +349,8 @@ iframe {
         left: 0;
         top: 0;
         padding-top: 65px;
+        -webkit-transform: none;
+        -ms-transform: none;
         transform: none;
         border: 0;
         opacity: 1;
@@ -356,12 +360,16 @@ iframe {
         height: 30px;
         left: 50%;
         top: 58px;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
         transform: translateX(-50%);
         background: #000;
         opacity: 0.4;
     }
     figure:hover h3, figure:hover p {opacity: 1;}
     figure:hover .btn {
+        -webkit-transform: none;
+        -ms-transform: none;
         transform: none;
         background: none;
     }
@@ -400,7 +408,7 @@ iframe {
     #thumb .flex-direction-nav .flex-next {right: 10px;}
     #thumb .flex-viewport {width: 100%; float: none;}
     #thumb .flex-control-thumbs {width: 100%; margin-top: 5px;}
-    .flex-control-thumbs li {width: 125px;}
+    #thumb .flex-control-thumbs li {width: 125px;}
 }
 
 @media (max-width: 575px) {
@@ -418,6 +426,8 @@ iframe {
         margin-top: 67px;
         font-size: 1.75em;
         line-height: 1.4;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
     #banner .slides > li em {display: block; height: 0; overflow: hidden;}
@@ -437,7 +447,7 @@ iframe {
     #thumb {width: 100%; max-width: 500px;}
     #thumb .slides > li {height:250px;}
     #thumb .flex-direction-nav a {top: 125px;}
-    .flex-control-thumbs li {width: 25%;}
+    #thumb .flex-control-thumbs li {width: 25%;}
     
     form p {margin-bottom: 8px;}
     form label {display: block; margin-bottom: 5px;}
